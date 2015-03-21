@@ -1,5 +1,7 @@
 # Docker Local Registry 
 
+ I made a docker private  registry in CentOS 6.5
+
 reference : https://blog.codecentric.de/en/2014/02/docker-registry-run-private-docker-image-repository/
 ref git  : https://github.com/lukaspustina/docker-registry-demo
 
