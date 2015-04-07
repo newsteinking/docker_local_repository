@@ -26,10 +26,10 @@ registry/config.yml:
 	@echo "3.===================================================>>>"
 	cat $@.template | sed "s/@@SEC_KEY@@/`openssl rand -hex 32`/" > $@
 
-registry/private-docker:
+registry/docker-registry:
 	@echo "4.===================================================>>>"
 	@echo "https://github.com/newsteinking/docker-registry.git"
-	-git clone https://github.com/newsteinking/docker-registry .git  $@
+	-git clone https://github.com/newsteinking/docker-registry.git  $@
 	cd $@; git checkout master
 	cd $@; git pull --rebase
 	cd $@; docker build --rm -t docker/docker-registry  .
