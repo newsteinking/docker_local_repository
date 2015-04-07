@@ -18,7 +18,7 @@ all:
 build: base registry start-registry python-2 python-3 build-clean stop-registry
 	docker images
 
-registry: registry/config.yml registry/private-docker
+registry: registry/config.yml registry/docker-registry 
 	@echo "2.===================================================>>>"
 	docker build --rm -t $(USERNAME)/$@ $@
 
@@ -29,10 +29,10 @@ registry/config.yml:
 registry/private-docker:
 	@echo "4.===================================================>>>"
 	@echo "https://github.com/newsteinking/private-docker.git"
-	-git clone https://github.com/newsteinking/private-docker.git  $@
+	-git clone https://github.com/newsteinking/docker-registry .git  $@
 	cd $@; git checkout master
 	cd $@; git pull --rebase
-	cd $@; docker build --rm -t docker/private-docker .
+	cd $@; docker build --rm -t docker/docker-registry  .
 
 base:
 	@echo "1.===================================================>>>"
@@ -98,7 +98,7 @@ clean-images:
 
 clean-downloads:
 	@echo "clean-downloads.===================================================>>>"
-	-@rm -rf registry/private-docker
+	-@rm -rf registry/docker-registry
 
 clean-registry-storage:
 	@echo "clean-registry-storage.===================================================>>>"
