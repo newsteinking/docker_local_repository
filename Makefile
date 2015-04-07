@@ -28,7 +28,7 @@ registry/config.yml:
 
 registry/private-docker:
 	@echo "4.===================================================>>>"
-	@echo "https://github.com/newsteinking/private-docker.git"
+	@echo "https://github.com/newsteinking/docker-registry.git"
 	-git clone https://github.com/newsteinking/docker-registry .git  $@
 	cd $@; git checkout master
 	cd $@; git pull --rebase
