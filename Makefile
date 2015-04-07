@@ -18,7 +18,7 @@ all:
 build: base registry start-registry python-2 python-3 build-clean stop-registry
 	docker images
 
-registry: registry/config.yml registry/docker-registry
+registry: registry/config.yml registry/private-docker
 	@echo "2.===================================================>>>"
 	docker build --rm -t $(USERNAME)/$@ $@
 
@@ -26,14 +26,13 @@ registry/config.yml:
 	@echo "3.===================================================>>>"
 	cat $@.template | sed "s/@@SEC_KEY@@/`openssl rand -hex 32`/" > $@
 
-registry/docker-registry:
+registry/private-docker:
 	@echo "4.===================================================>>>"
-	-git clone https://github.com/dotcloud/docker-registry.git $@
+	@echo "https://github.com/newsteinking/private-docker.git"
+	-git clone https://github.com/newsteinking/private-docker.git  $@
 	cd $@; git checkout master
 	cd $@; git pull --rebase
-	cd $@; git checkout $(REGISTRY_VERSION)
-	cd $@; cp ../Dockerfile.reg ./Dockerfile 
-	cd $@; docker build --rm -t docker/docker-registry .
+	cd $@; docker build --rm -t docker/private-docker .
 
 base:
 	@echo "1.===================================================>>>"
@@ -41,8 +40,8 @@ base:
 
 start-registry: registry/docker-registry-storage
 	@echo "5.===================================================>>>"
-	docker -e GUNICORN_OPTS=[--preload] run --name registry  -p 5000:5000 -v `pwd`/registry/docker-registry-storage:/docker-registry-storage $(USERNAME)/registry
-	-@sleep 2 
+	docker -e GUNICORN_OPTS=[--preload] run --name registry   -p 5000:5000 -v `pwd`/registry/docker-registry-storage:/docker-registry-storage $(USERNAME)/registry
+	-@sleep 2
 
 registry/docker-registry-storage:
 	@echo "7.===================================================>>>"
@@ -99,7 +98,7 @@ clean-images:
 
 clean-downloads:
 	@echo "clean-downloads.===================================================>>>"
-	-@rm -rf registry/docker-registry
+	-@rm -rf registry/private-docker
 
 clean-registry-storage:
 	@echo "clean-registry-storage.===================================================>>>"
