@@ -7,19 +7,19 @@ MAINTAINER Lukas Pustina <lukas.pustina@codecentric.de>
 ENV DEBIAN_FRONTEND noninteractive
 
 
-ENV http_proxy 'http://10.3.0.172:8080'
-ENV https_proxy 'http://10.3.0.172:8080'
-ENV HTTP_PROXY 'http://10.3.0.172:8080'
-ENV HTTPS_PROXY 'http://10.3.0.172:8080'
-RUN export http_proxy=$HTTP_PROXY
-RUN export https_proxy=$HTTPS_PROXY
-
-#ENV http_proxy=http://10.3.0.172:8080
-#ENV https_proxy=http://10.3.0.172:8080
-#ENV HTTP_PROXY=http://10.3.0.172:8080
-#ENV HTTPS_PROXY=http://10.3.0.172:8080
+#ENV http_proxy 'http://10.3.0.172:8080'
+#ENV https_proxy 'http://10.3.0.172:8080'
+#ENV HTTP_PROXY 'http://10.3.0.172:8080'
+#ENV HTTPS_PROXY 'http://10.3.0.172:8080'
 #RUN export http_proxy=$HTTP_PROXY
 #RUN export https_proxy=$HTTPS_PROXY
+
+ENV http_proxy=http://10.3.0.172:8080
+ENV https_proxy=http://10.3.0.172:8080
+ENV HTTP_PROXY=http://10.3.0.172:8080
+ENV HTTPS_PROXY=http://10.3.0.172:8080
+RUN export http_proxy=$HTTP_PROXY
+RUN export https_proxy=$HTTPS_PROXY
 
 
 RUN sudo rm -rvf /var/lib/apt/lists/* 
