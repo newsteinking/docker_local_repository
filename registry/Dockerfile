@@ -14,10 +14,10 @@ ENV SETTINGS_FLAVOR demo
 
 ## if you are in closed network add following proxy
 
-ENV http_proxy 'http://10.3.0.172:8080'
-ENV https_proxy 'http://10.3.0.172:8080'
-ENV HTTP_PROXY 'http://10.3.0.172:8080'
-ENV HTTPS_PROXY 'http://10.3.0.172:8080'
+ENV http_proxy=http://10.3.0.172:8080
+ENV https_proxy=http://10.3.0.172:8080
+ENV HTTP_PROXY=http://10.3.0.172:8080
+ENV HTTPS_PROXY=http://10.3.0.172:8080
 RUN export http_proxy=$HTTP_PROXY
 RUN export https_proxy=$HTTPS_PROXY
 
