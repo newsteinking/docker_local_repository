@@ -14,10 +14,10 @@ ENV SETTINGS_FLAVOR demo
 
 ## if you are in closed network add following proxy
 
-ENV http_proxy=http://10.3.0.172:8080
-ENV https_proxy=http://10.3.0.172:8080
-ENV HTTP_PROXY=http://10.3.0.172:8080
-ENV HTTPS_PROXY=http://10.3.0.172:8080
+ENV http_proxy 'http://10.3.0.172:8080'
+ENV https_proxy 'http://10.3.0.172:8080'
+ENV HTTP_PROXY 'http://10.3.0.172:8080'
+ENV HTTPS_PROXY 'http://10.3.0.172:8080'
 RUN export http_proxy=$HTTP_PROXY
 RUN export https_proxy=$HTTPS_PROXY
 
@@ -29,6 +29,6 @@ RUN sudo rm  -rvf /var/lib/apt/lists/*
 RUN sudo sed 's@archive.ubuntu.com@ftp.kaist.ac.kr@' -i /etc/apt/sources.list
 RUN sudo apt-get update
 
-#CMD ["docker-registry"]
-CMD ["private-docker"]
+CMD ["docker-registry"]
+#CMD ["private-docker"]
 
