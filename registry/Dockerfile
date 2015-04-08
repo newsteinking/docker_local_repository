@@ -25,9 +25,11 @@ RUN export https_proxy=$HTTPS_PROXY
 ENV GUNICORN_WORKERS 8
 ENV GUNICORN_GRACEFUL_TIMEOUT 3600
 ENV GUNICORN_SILENT_TIMEOUT 3600
-RUN sudo rm  -rvf /var/lib/apt/lists/*
-RUN sudo sed 's@archive.ubuntu.com@ftp.kaist.ac.kr@' -i /etc/apt/sources.list
-RUN sudo apt-get update
+##sean
+
+#RUN sudo rm  -rvf /var/lib/apt/lists/*
+#RUN sudo sed 's@archive.ubuntu.com@ftp.kaist.ac.kr@' -i /etc/apt/sources.list
+#RUN sudo apt-get update
 
 CMD ["docker-registry"]
 #CMD ["private-docker"]
