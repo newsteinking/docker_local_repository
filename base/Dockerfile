@@ -21,9 +21,10 @@ RUN export https_proxy=$HTTPS_PROXY
 #RUN export http_proxy=$HTTP_PROXY
 #RUN export https_proxy=$HTTPS_PROXY
 
+##sean 
+#RUN sudo rm -rvf /var/lib/apt/lists/* 
+#RUN sudo sed 's@archive.ubuntu.com@ubuntu.mirror.atratoip.net@' -i /etc/apt/sources.list  /// XXX
+#RUN sudo sed 's@archive.ubuntu.com@ftp.kaist.ac.kr@' -i /etc/apt/sources.list
 
-RUN sudo rm -rvf /var/lib/apt/lists/* 
-#RUN sudo sed 's@archive.ubuntu.com@ubuntu.mirror.atratoip.net@' -i /etc/apt/sources.list
-RUN sudo sed 's@archive.ubuntu.com@ftp.kaist.ac.kr@' -i /etc/apt/sources.list
 RUN sudo  apt-get update
 
